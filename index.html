@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoldStudio</title>
+<meta name="description" content="MoldStudio designs nasoalveolar molding (NAM) plates for infants with cleft lip and palate from intraoral scans. Research alpha for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark">M</span>MoldStudio</a>
+    <nav>
+      <a class="opt" href="#pipeline">How it works</a>
+      <a class="opt" href="#safety">Safety</a>
+      <a class="opt" href="#research">Research</a>
+      <a href="walkthrough.html"><span class="long">Clinician </span>walkthrough</a>
+      <a href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>From an infant's intraoral scan to a series of NAM plates.</h1>
+    <p class="lead">MoldStudio reads the scan and finds the cleft and the alveolar segments. The clinician says where each segment should end up. The app divides that movement into plates timed to the visits before surgery, checks every plate, and prepares the plates for 3D printing or thermoforming. The clinician reviews and approves each step.</p>
+    <div class="cta">
+      <a class="btn primary" href="#download">Download for macOS <small>Apple Silicon</small></a>
+      <a class="btn" href="walkthrough.html">Walk through the app</a>
+    </div>
+    <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. A generated file, an approval or a passing software check does not show that a plate fits or works. The treating clinician is responsible for every design and every clinical decision. Everything runs on your Mac, with no account. Sending usage information or cases to the MoldStudio team is off unless you turn it on; see <a href="privacy.html">Privacy</a>.</div>
+  </div>
+
+  <div class="wrap">
+    <figure class="shot">
+      <img src="assets/shots/overview.webp" alt="The MoldStudio window: step rail across the top, the open step on the left, the palate scan in 3D, and the plate strip along the bottom" loading="lazy">
+      <figcaption>The main window on a de-identified unilateral cleft scan: the step rail across the top, the open step on the left with a plate's verdict card, the built plate over its anatomy, and the plate strip along the bottom.</figcaption>
+    </figure>
+  </div>
+
+  <section id="pipeline">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">Seven guided steps. At each one the app builds a proposal, and the clinician inspects it, edits it and approves it. Sending a step back withdraws its approval and every approval after it, and the app says which.</p>
+      <div class="pipeline">
+        <div class="card"><h3>Case</h3><p>Import a de-identified <code>.stl</code>, <code>.ply</code> or <code>.obj</code> scan of the upper jaw. Remove the flaps that scanner stitching leaves. Record the diagnosis, the arch and the visit and surgery dates. Left/right and mirroring cannot be measured from a scan, so they are the clinician's assertions.</p></div>
+        <div class="card"><h3>Anatomy</h3><p>A classifier fits the alveolar crest, counts the interruptions along it (intact, unilateral or bilateral) and sets an anatomical frame. It measures cleft width, arch length, posterior width and premaxilla position. The clinician can declare the cleft type: the classifier then looks for a reading of that type that passes every check, or stops. It never invents a cleft.</p></div>
+        <div class="card"><h3>Segments</h3><p>The app paints the greater and lesser segments (unilateral) or the premaxilla and both laterals (bilateral), plus the cleft margin, the stable palate and the plate extent. The clinician corrects it with a brush; <em>Fill in the rest</em> completes the painting around their strokes and never overwrites them.</p></div>
+        <div class="card"><h3>Plan: key poses</h3><p>Treatment is a list of phases, for example expand, retract, then approximate. For each phase the clinician drags each segment to its end pose and says whether it <strong>moves</strong>, <strong>grows</strong> or <strong>holds</strong>. The app stages plates between the poses, spread over the visits before surgery, within ceilings of 1&nbsp;mm per week and per plate, and an assumed 1.5° of rotation per week. Plates already made never change.</p></div>
+        <div class="card"><h3>Plates</h3><p>Each plate is shelled over that stage's tissue. The cleft is blocked out with a ball the width of the cleft, the digital version of waxing it out. The app adds retention arms and can extend a flange past the scan's edge, marked <em>inferred</em>. Every plate gets a print verdict and a fit verdict. A plate that fails a check is held. It can be approved over the hold only with a written reason, and the reason is kept.</p></div>
+        <div class="card"><h3>Print</h3><p>The plates themselves, oriented, supported and nested for a resin printer (Asiga MAX X27, Asiga PRO 4K65, Phrozen Sonic Mini 8K, or your own profile), or thermoforming models. The output is STL and 3MF with a job sheet, and every number and file hash is recorded.</p></div>
+        <div class="card"><h3>Follow-up</h3><p>Register a visit's scan to the plan on the stable palate. The deviation map shows the scan's own measurement floor (about 0.9&nbsp;mm) beside every statistic. The clinician can record the visit, or adopt the new scan and re-plan from it; delivered plates stay as they are.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="safety">
+    <div class="wrap">
+      <h2>Safety by design</h2>
+      <p class="sub">The rules the software holds itself to, and why.</p>
+      <div class="grid g2">
+        <div class="card"><h3>Limits are tissue responses, not millimetres</h3><p>The safety limits in NAM are tissue responses: no ulceration, no sustained blanching, no lock-out, no mega-nostril. Numeric thresholds in the app are defaults the clinician can change, and each shows its source and whether it was measured, asserted by experts or chosen by convention.</p></div>
+        <div class="card"><h3>Diagnosis never scales geometry</h3><p>The cleft type decides which segments exist and where they hinge; every millimetre comes from the measured scan. A unilateral cleft with a partial lip can be worse than a complete one (Kriens 1991), so a label is not a size.</p></div>
+        <div class="card"><h3>Clinician marks outrank automation</h3><p>Anatomy marks, painted segments and drawn plate borders are instructions. The automatic reading fills in around them and never overwrites them.</p></div>
+        <div class="card"><h3>A missing measurement is never a pass</h3><p>A missing, unreadable or out-of-date measurement holds the plate (UNVERIFIED or NOT MEASURED). A safety check that cannot run says so; it does not stay silent.</p></div>
+        <div class="card"><h3>Delivered plates never change</h3><p>A plate the patient has been given is locked on disk. Later plates are checked against the plate 0 the patient actually has.</p></div>
+        <div class="card"><h3>Every override has a reason</h3><p>A stop can be overridden only with a written reason, and the reason is kept with the finding it overrode. <em>Inferred</em> tissue past the scan's edge is marked, relieved and reported on its own. The same inputs always build the same plates.</p></div>
+      </div>
+      <h3 style="margin-top:34px">Movement checks and their sources</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Check</th><th>What it flags</th><th>Source (status)</th></tr></thead>
+          <tbody>
+            <tr><td>Bodily retraction of the premaxilla</td><td>Movement at the premaxillary-vomerine suture that is mostly translation rather than rotation</td><td>Berkowitz; Ritschl 2018; Ashith 2022; Vargervik 1983 (the mechanism is well supported; the cut-off is a convention)</td></tr>
+            <tr><td>Premaxilla retraction ceiling</td><td>Total retraction beyond about 5&nbsp;mm</td><td>Bangun 2024, n=26 (measured; a trigger to consider other options, not a harm threshold)</td></tr>
+            <tr><td>Rate</td><td>More than 1&nbsp;mm per visit</td><td>Grayson &amp; Shetye 2009 (expert assertion; no dose-response study exists)</td></tr>
+            <tr><td>Lock-out risk</td><td>Inward rotation producing a T-shaped arch</td><td>Published incidence 42.8% in one arm (the onset angle is a convention)</td></tr>
+            <tr><td>Space and over-expansion</td><td>The premaxilla cannot seat; large expansion that is likely to relapse</td><td>Fukuyama (single case report; a prompt to confirm intent)</td></tr>
+            <tr><td>Mega-nostril risk</td><td>Nasal stenting before the gap is 5&nbsp;mm or less</td><td>Grayson (contested by Jahanbin 2020, RCT)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <h2>What we learned along the way</h2>
+      <p class="sub">General findings from the literature and from engineering the tool. None of these rests on patient data.</p>
+      <div class="grid g2">
+        <div class="card"><h3>Most NAM "limits" are not measured</h3><p>Rate rules, force figures and timing windows are expert assertions. They differ between sources and have not been validated against outcomes.</p></div>
+        <div class="card"><h3>"1&nbsp;mm per week" is a ceiling, not a tissue rate</h3><p>It limits how much acrylic is removed per visit. Measured closure averages about 0.5&nbsp;mm per week (Chou 2017, n=20).</p></div>
+        <div class="card"><h3>Closure is front-loaded</h3><p>About 56% of closure happens in the first 3 weeks and about 86% by 6 weeks. The spread between patients is large, so adapting to each rescan is worth more than a better single prediction.</p></div>
+        <div class="card"><h3>Rotate the premaxilla, never retract it bodily</h3><p>The literature warns that bodily retraction can fuse the premaxillary-vomerine suture and lead to midface retrusion.</p></div>
+        <div class="card"><h3>Treatment is phased, and not one-way</h3><p>Bilateral protocols derotate, retract, then align, while unilateral cohorts show the cleft narrowing as posterior width grows. Different segments move in different phases, sometimes in opposite directions.</p></div>
+        <div class="card"><h3>No infant tissue data exists</h3><p>There is no published material data for infant oral mucosa, so there is no basis for a pressure model. MoldStudio reports geometry: where the plate overlaps or relieves the tissue, and by how much.</p></div>
+        <div class="card"><h3>Graded walls in printed resin</h3><p>In Dental LT Clear, span beats thinness: deflection scales with span² ÷ thickness. Living hinges are not possible (about 12% elongation), the resin loses about 26% of its stiffness in 14 days of warm water, and weekly chairside grinding eats into any thinned zone.</p></div>
+        <div class="card"><h3>The digital NAM gap</h3><p>We found no published system that combines automatic segmentation, a staged series and moving segments, and no open NAM planner. Evidence that presurgical orthopedics changes outcomes is itself low-quality, so the tool's value is a reproducible, traceable record rather than sub-millimetre prediction.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech">
+    <div class="wrap">
+      <h2>Under the hood</h2>
+      <div class="grid g3">
+        <div class="card"><h3>Application</h3><p>Python and Qt (PySide6), with 3D views in VTK/PyVista. NumPy and SciPy do the geometry and planning, and Open3D the registration.</p></div>
+        <div class="card"><h3>Native kernel</h3><p>A C++17 kernel: a fork of Instant Meshes for quad remeshing, OpenSubdiv for the smooth working surface, and OpenVDB level sets for shelling, the cleft-closing ball and booleans.</p></div>
+        <div class="card"><h3>Determinism and versioning</h3><p>Booleans and registration are pinned so the same inputs give the same plates. Saved cases are tied to a declared algorithm version, and a test fails if the code that builds or judges a plate changes without a version bump.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="limits">
+    <div class="wrap">
+      <h2>Limitations</h2>
+      <div class="grid g2">
+        <div class="card"><ul>
+          <li>Not validated clinically. There is no tissue-response model, and segment movement is geometric.</li>
+          <li>Newborn scans stop short of the vestibule, so the flange past the scan's edge is inferred and must be fitted chairside.</li>
+          <li>No nasal stent: an intraoral scan does not capture the external nose.</li>
+          <li>Growth and rotation rates are assumptions; there is no published per-week figure for either.</li>
+        </ul></div>
+        <div class="card"><ul>
+          <li>Scans can differ by about 0.5–0.9&nbsp;mm with no change in the patient, so smaller deviations are not findings.</li>
+          <li>The classifier can misread unusual anatomy. It reports its findings, and the clinician's declaration comes first.</li>
+          <li>Apple Silicon Macs only. The app is not notarized by Apple.</li>
+          <li>An update that changes how plates are built asks open cases to be re-approved and their plates rebuilt. The app says so before it installs one; update between cases.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="wrap">
+      <h2>Download</h2>
+      <p class="sub">MoldStudio for macOS, research alpha. Needs an Apple Silicon Mac (M1 or later) with macOS 15 or later, and about 2&nbsp;GB of free disk space. No internet is needed after the download.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/latest/download/MoldStudio-macOS-arm64.zip">Download MoldStudio <small>zip, about 250&nbsp;MB</small></a>
+        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/latest">Release notes and checksum</a>
+      </div>
+      <div class="grid g2" style="margin-top:24px">
+        <div class="card"><h3>First launch</h3><ol class="steps-list" style="color:var(--muted);font-size:15px;margin:6px 0 0">
+          <li>Unzip the download and drag <code>MoldStudioV2.app</code> into Applications.</li>
+          <li>Open it. macOS will block it, because the app is not notarized.</li>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong> for MoldStudio, and confirm.</li>
+          <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
+        </ol></div>
+        <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Unsaved edits are kept as recovery points and offered back the next time the case is opened. Sharing with the MoldStudio team is opt-in; see <a href="privacy.html">Privacy</a>.</p></div>
+        <div class="card"><h3>Updates without reinstalling</h3><p>After this first install, MoldStudio checks for new releases and offers them with their notes. Choose <em>Install when I quit</em>: the update is verified against the MoldStudio release signature, installs when you quit, and the previous version is kept.</p></div>
+      </div>
+      <div class="notice"><strong>Not for clinical use without your own verification.</strong> Inspect and fit every plate. Nothing the software reports replaces clinical judgement.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">MoldStudio · research alpha · not a medical device. Built with Instant Meshes, OpenSubdiv, OpenVDB, Qt and VTK; see the third-party licences shipped with the app. · <a href="walkthrough.html"><span class="long">Clinician </span>walkthrough</a> · <a href="privacy.html">Privacy</a></div>
+</footer>
+</body>
+</html>

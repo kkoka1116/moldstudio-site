@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinician Walkthrough</title>
+<meta name="description" content="A step-by-step guide to designing a NAM plate series in MoldStudio, from importing a scan to preparing print jobs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark">M</span>MoldStudio</a>
+    <nav>
+      <a class="opt" href="index.html#pipeline">How it works</a>
+      <a class="opt" href="index.html#safety">Safety</a>
+      <a href="walkthrough.html" aria-current="page"><span class="long">Clinician </span>walkthrough</a>
+      <a href="index.html#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero" style="padding-bottom:10px">
+    <h1>Clinician walkthrough</h1>
+    <p class="lead">One case from scan to print jobs, step by step: what you see at each step, what to do, and what to check before you approve.</p>
+    <div class="notice"><strong>About these pictures.</strong> Every screenshot is from the app itself, run on the de-identified upper-jaw scan of one unilateral cleft case. No names appear, and the dates are invented for the example. MoldStudio is a research alpha and not a medical device: check and fit every plate yourself.</div>
+  </div>
+
+  <div class="walk-layout">
+    <nav class="toc" aria-label="Steps">
+      <a href="#window">The window</a>
+      <a href="#start">0 · Start a case</a>
+      <a href="#case">1 · Case</a>
+      <a href="#anatomy">2 · Anatomy</a>
+      <a href="#segments">3 · Segments</a>
+      <a href="#plan">4 · Plan</a>
+      <a href="#plates">5 · Plates</a>
+      <a href="#print">6 · Print</a>
+      <a href="#followup">7 · Follow-up</a>
+      <a href="#habits">Good habits</a>
+    </nav>
+
+    <div>
+      <article class="step" id="window">
+        <div class="kicker">Before you start</div>
+        <h2>Finding your way around</h2>
+        <p>Along the top is the <strong>step rail</strong>: Case, Anatomy, Segments, Plan, Plates, Print, Follow-up. Each step shows its state: <em>not yet</em>, <em>review</em>, <em>approved</em>, <em>building</em>, <em>failed</em>, or <em>stop</em> when a finding needs attention. On the left, the <strong>inspector</strong> shows the open step, with <strong>Approve and continue</strong> and <strong>Send back</strong> at its foot. Above the 3D view, the <strong>viewport bar</strong> has Occlusal, Front, Left and Right views and the step's display options. Along the bottom, the <strong>plate strip</strong> shows every planned plate, its date and its state.</p>
+        <div class="tip">You approve one step at a time, and the app builds the next step as soon as you do. If you change something upstream, the approvals that depended on it are withdrawn, and the step says which ones.</div>
+      </article>
+
+      <article class="step" id="start">
+        <div class="kicker">Step 0</div>
+        <h2>Start a case</h2>
+        <figure class="shot"><img src="assets/shots/01_start_screen.webp" alt="The start screen with the New case panel filled in" loading="lazy"><figcaption>The start screen. Your cases are listed on the left with their step progress. Choosing a scan you have used before offers to start from that case.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>The cases worked on on this Mac, each with its step states, and a <em>New case</em> panel.</p></div>
+          <div class="card"><h3>You do</h3><p>Choose the scan and name the case, for example <em>Patient A</em>. If you used the same scan file before, the app offers to bring over the cleaning, case record and cleft type (never the painting).</p></div>
+        </div>
+        <div class="tip caution">De-identify file and folder names <em>before</em> importing: the case records where the scan came from.</div>
+      </article>
+
+      <article class="step" id="case">
+        <div class="kicker">Step 1</div>
+        <h2>Case</h2>
+        <figure class="shot"><img src="assets/shots/03_case_step.webp" alt="The Case step with the imported palate scan" loading="lazy"><figcaption>The imported scan in the Case step. The case ID is an opaque code, and LAHSHAL records the diagnosis as a clinical assertion.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>The scan in 3D, the cleaning tools, and the case record: diagnosis, arch, dates, painter and notes.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Check the orientation and size look right.</li><li>Remove scanner flaps with <em>Find aberrations</em> or the brush.</li><li>Enter the diagnosis and the scan and surgery dates; the plate schedule is built from them.</li><li>Approve.</li></ul></div>
+        </div>
+        <div class="tip">Left/right and mirroring cannot be measured from a scan. They are your clinical assertion, so check them here.</div>
+      </article>
+
+      <article class="step" id="anatomy">
+        <div class="kicker">Step 2</div>
+        <h2>Anatomy</h2>
+        <figure class="shot"><img src="assets/shots/04a_anatomy_side_warning.webp" alt="The Anatomy step warning that the cleft reads on the other side from the case record" loading="lazy"><figcaption>First build: the scan reads with the cleft on the patient's left, but the case record says right. The app warns rather than guessing. This scanner's export is a mirror image of the patient.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/04_anatomy_built.webp" alt="The Anatomy step after Mirror L/R, reading a right-sided cleft" loading="lazy"><figcaption>After the clinician confirms the mirroring and presses <em>Mirror L/R</em>, the anatomy reads "cleft patient-right, shown mirrored", with its width, depth and posterior arch width.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>The classifier's reading (cleft type and side, measurements), its findings, the fitted frame and the working surface.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Check the cleft type and side against the patient.</li><li>If it is wrong, declare the type and rebuild. The app then looks for a reading of that type that passes every check, or stops; it never invents a cleft.</li><li>If the side disagrees with the case record, confirm it clinically and use <em>Mirror L/R</em>. No measurement can tell a mirrored scan from a real one.</li><li>If the front of the arch is reversed, use <em>Reverse front/back</em>.</li><li>Approve.</li></ul></div>
+        </div>
+        <div class="tip caution">Building Anatomy again replaces the working surface and any painting. The app asks before it does.</div>
+      </article>
+
+      <article class="step" id="segments">
+        <div class="kicker">Step 3</div>
+        <h2>Segments</h2>
+        <figure class="shot"><img src="assets/shots/05_segments_built.webp" alt="Painted segments on the palate" loading="lazy"><figcaption>The painted proposal: greater and lesser segments, cleft margin, stable palate and plate extent.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>The painted segments, the cleft margin, the stable palate and the plate extent.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Paint or erase where the proposal is wrong.</li><li>Use <em>Fill in the rest</em> to complete the painting around your strokes without changing them.</li><li>Approve.</li></ul></div>
+        </div>
+        <div class="tip">Your strokes are instructions. Rebuilding with <em>Fill in the rest</em> keeps them; building the segments from scratch asks first, because it would replace them.</div>
+      </article>
+
+      <article class="step" id="plan">
+        <div class="kicker">Step 4</div>
+        <h2>Plan: key poses</h2>
+        <figure class="shot"><img src="assets/shots/07_plan_keyposes_phases.webp" alt="The Plan step with key-pose phases listed" loading="lazy"><figcaption>Key poses: each phase's end pose per segment, with its purpose.</figcaption></figure>
+        <p>Treatment is a list of <strong>phases</strong>, for example expand, retract, then approximate. For each phase you drag each segment to where it should end up and give it a purpose:</p>
+        <ul>
+          <li><strong>Move</strong>: the plate pushes the segment toward the pose.</li>
+          <li><strong>Grow</strong>: the plate is relieved ahead of the segment and never pushes it.</li>
+          <li><strong>Hold</strong>: the segment stays where the last phase left it.</li>
+        </ul>
+        <figure class="shot"><img src="assets/shots/08_plan_staged.webp" alt="Plates staged along the timeline" loading="lazy"><figcaption>After <em>Stage plates</em>: a fit plate and nine stages, one per visit before surgery, shown in the plate strip with their dates. The dates here are invented.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>The app does</h3><p>Stages plates between your poses and spreads them over every visit before surgery, within ceilings of 1&nbsp;mm per week and per plate (at the fastest-moving point) and an assumed 1.5° per week. No plate is dated on or after surgery. If the plates do not fit, nothing is compressed; the app tells you by how much.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Pose each phase, then press <em>Stage plates</em>.</li><li>For each stage, read the movement findings and approve it. A stop needs a written reason.</li><li><em>Suggest</em> (research) can propose phases for you to edit.</li></ul></div>
+        </div>
+        <div class="tip">Plates already made never change. Restaging keeps delivered plates exactly as they are.</div>
+      </article>
+
+      <article class="step" id="plates">
+        <div class="kicker">Step 5</div>
+        <h2>Plates</h2>
+        <figure class="shot"><img src="assets/shots/10_plates_built.webp" alt="A built plate over its stage's anatomy" loading="lazy"><figcaption>A built plate, translucent, over the anatomy it was made for, with its retention arm. The panel gives the measured wall beside the prescribed one: thinnest wall 1.85&nbsp;mm, prescribed 2.00&nbsp;mm.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/10b_plate_alone.webp" alt="The plate shown alone" loading="lazy"><figcaption><em>Plate alone</em> hides the anatomy so you can look at the plate itself.</figcaption></figure>
+        <p>Each approved stage's plate builds in the background while you keep working. Every plate gets two verdicts:</p>
+        <ul>
+          <li><strong>Print</strong>: one watertight piece, no holes, and the thinnest wall measured against the 1.0&nbsp;mm print bar. The measured wall is shown beside the wall you prescribed.</li>
+          <li><strong>Fit</strong>: how the plate seats on the tissue and whether it activates as planned. A measurement that could not be read says <em>NOT MEASURED</em>; it is never a pass.</li>
+        </ul>
+        <figure class="shot"><img src="assets/shots/11_plate_reviewed.webp" alt="A reviewed plate seen from the front" loading="lazy"><figcaption>The plate's verdict card: movement approved, ready to print, fit ok, anatomy overlap flagged for inspection, review approved.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>Each plate alone or over its anatomy, its verdict rows, the tissue overlap, and any <em>inferred</em> flange drawn ghosted.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Read the findings. A held plate shows why.</li><li>Optionally extend the flange, draw the plate border, add the posterior build-up, or edit the plate directly (arms, add, remove, smooth).</li><li>Approve each plate's review. Approving over a hold needs a written reason, which is kept.</li><li>When a plate is given to the patient, mark it <em>delivered</em>: it is then locked.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="step" id="print">
+        <div class="kicker">Step 6</div>
+        <h2>Print</h2>
+        <figure class="shot"><img src="assets/shots/13_print_prepared.webp" alt="The Print step with a prepared job" loading="lazy"><figcaption>Three reviewed plates prepared as one job for an Asiga PRO 4K65 in KeySplint Soft.</figcaption></figure>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>The route (the plates themselves, or thermoforming models), the printer, the resin or sheet, the reviewed plates available, and the job layout.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Choose the route and profiles, then <em>Prepare print jobs</em>.</li><li>Open the print folder and read the job sheet, including any holds.</li><li>Import <code>build.3mf</code> or <code>build.stl</code> into your printer's software.</li></ul></div>
+        </div>
+        <figure class="shot"><img src="assets/shots/14_print_bed.webp" alt="The build plate preview with supported plates" loading="lazy"><figcaption>The bed preview: plates oriented and supported, with supports kept off the fitting surface and rim.</figcaption></figure>
+      </article>
+
+      <article class="step" id="followup">
+        <div class="kicker">Step 7</div>
+        <h2>Follow-up</h2>
+        <div class="do-see">
+          <div class="card"><h3>You see</h3><p>Three tabs. <em>Visit</em> imports a new scan; <em>Deviation</em> shows a map of predicted against actual; <em>Response</em> shows the cleft gap over time.</p></div>
+          <div class="card"><h3>You do</h3><ul><li>Import the visit's scan and choose the stage it should match; it is registered on the stable palate.</li><li>Read the deviation against the scan's own floor of about 0.9&nbsp;mm; smaller differences are not findings.</li><li>Record the visit, or adopt the scan and re-plan from it. Delivered plates stay as they are.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="step" id="habits">
+        <div class="kicker">Good habits</div>
+        <h2>Working safely with MoldStudio</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Your work is kept</h3><p>Unsaved edits are saved as recovery points, and the app offers them back when you reopen the case. File › Save is still the checkpoint.</p></div>
+          <div class="card"><h3>Long jobs can be cancelled</h3><p>Building a step shows a Cancel button. It stops at the next checkpoint, and nothing is adopted.</p></div>
+          <div class="card"><h3>Updates install when you quit</h3><p>When a new release is out, MoldStudio offers it with its notes. Choose <em>Install when I quit</em>. If it changes how plates are built, it says so: open cases will need re-approval, so finish the case first.</p></div>
+          <div class="card"><h3>Undo</h3><p>Edit › Undo reverts the last thing you did: a paint stroke, a cage edit, a key-pose change or a stage edit. It does not bring back an approval that was withdrawn.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">MoldStudio · research alpha · not a medical device. · <a href="index.html">Home</a> · <a href="index.html#download">Download</a> · <a href="privacy.html">Privacy</a></div>
+</footer>
+</body>
+</html>
