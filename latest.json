@@ -1,0 +1,11 @@
+{
+ "algorithm_version": 2,
+ "build_id": "alpha-794ffd69cf94",
+ "notes": "First release with automatic updates, opt-in sharing and the plate-safety checks. Install this one by hand; later releases arrive in the app.",
+ "published": "2026-09-30",
+ "sequence": 1,
+ "sha256": "c8aa107cfe9524f24428ef4bc4b278293bfab6818c6e9132a78085de7a04ea98",
+ "size": 254385648,
+ "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip",
+ "version": "0.1.0"
+}
