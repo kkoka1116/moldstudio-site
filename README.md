@@ -8,4 +8,4 @@ walkthrough, the privacy statement, and the macOS download.
   MoldStudio source repository and signed with a key that is not stored here.
 - MoldStudio is a research alpha and **not a medical device**. The treating clinician is responsible for
   every design and every clinical decision.
-- The walkthrough screenshots were taken on one de-identified scan: no names, and invented dates.
+- The screenshots were taken on one de-identified scan of a stone model (a right unilateral cleft): no names and no dates.

@@ -14,6 +14,7 @@
   <div class="wrap">
     <a class="brand" href="index.html"><span class="mark">M</span>MoldStudio</a>
     <nav>
+      <a class="opt" href="#new">What's new</a>
       <a class="opt" href="#pipeline">How it works</a>
       <a class="opt" href="#safety">Safety</a>
       <a class="opt" href="#research">Research</a>
@@ -26,7 +27,7 @@
 <main>
   <div class="wrap hero">
     <h1>From an infant's intraoral scan to a series of NAM plates.</h1>
-    <p class="lead">MoldStudio reads the scan and finds the cleft and the alveolar segments. The clinician says where each segment should end up. The app divides that movement into plates timed to the visits before surgery, checks every plate, and prepares the plates for 3D printing or thermoforming. The clinician reviews and approves each step.</p>
+    <p class="lead">MoldStudio reads an intraoral scan, or a scan of a stone model, and finds the cleft and the alveolar segments. The clinician drags each segment to where it should end up and draws where each plate should end. The app divides that movement into plates timed to the visits before surgery, checks every plate, and prepares the plates for 3D printing or thermoforming. The clinician reviews, edits and approves each step.</p>
     <div class="cta">
       <a class="btn primary" href="#download">Download for macOS <small>Apple Silicon</small></a>
       <a class="btn" href="walkthrough.html">Walk through the app</a>
@@ -36,21 +37,44 @@
 
   <div class="wrap">
     <figure class="shot">
-      <img src="assets/shots/overview.webp" alt="The MoldStudio window: step rail across the top, the open step on the left, the palate scan in 3D, and the plate strip along the bottom" loading="lazy">
-      <figcaption>The main window on a de-identified unilateral cleft scan: the step rail across the top, the open step on the left with a plate's verdict card, the built plate over its anatomy, and the plate strip along the bottom.</figcaption>
+      <img src="assets/shots/overview.webp" alt="The MoldStudio window: step rail across the top, the Plan step on the left, a built plate over the palate in 3D, and the plate strip along the bottom" loading="lazy">
+      <figcaption>The main window on a de-identified scan of a stone model of a right unilateral cleft: the step rail across the top, the Plan step on the left with the stage's verdict card, the stage's plate over the tissue it was made for, and the twelve-plate series along the bottom.</figcaption>
     </figure>
   </div>
+
+  <section id="new">
+    <div class="wrap">
+      <h2>What's new</h2>
+      <p class="sub">Since the first public release, MoldStudio has been rebuilt around one real right unilateral case, scanned from a stone model. The pictures on this site come from that case. These changes are in the development build and come with the next update; the download below is the current public release.</p>
+      <figure class="shot" style="margin-bottom:22px">
+        <img src="assets/shots/series.webp" alt="Thirteen plates, the fit plate and plates 1 to 12, each over the predicted tissue of its stage" loading="lazy">
+        <figcaption>The whole series for the case: the fit plate and twelve weekly plates, each drawn over the tissue predicted for its stage. Each plate is cut to the border the clinician drew for that stage.</figcaption>
+      </figure>
+      <div class="grid g2">
+        <div class="card"><h3>Close a unilateral cleft with handles</h3><p>A Movement window shows the arch from the mouth. Drag the greater segment's tip to where it should end, the diamond to where its curve starts, and the lesser segment's dot to set how far it comes across. Both segments approximate while the greater curves over into the arch, the curve graded from the tuberosity to the tip. Play runs the stages, and the window reports the cleft gap and the travel at every stage.</p></div>
+        <div class="card"><h3>Pose each segment as a rigid body</h3><p>Under the curve, each segment can be moved forward, across and up, and turned, tilted and rolled. Drag a crest line to move a segment, or hold Shift to turn it about its back end. The directions are anchored on the anatomy: forward is perpendicular to the line between the two tuberosities.</p></div>
+        <div class="card"><h3>Soft tissue follows its own segment</h3><p>Each part of the scan moves with the segment it belongs to. The cleft lining no longer stretches like one membrane between the segments, so the predicted tissue stays smooth and does not fold.</p></div>
+        <div class="card"><h3>Draw each plate's border</h3><p>After the movement is posed, the clinician draws where the plate ends on each stage's predicted tissue. The first stage's line can be copied forward and edited. Each plate is cut to its line plus an allowance (1.5&nbsp;mm in this case) and its edge is rounded. A piece cut off inside the line holds the plate.</p></div>
+        <div class="card"><h3>A plate editor that paints, then applies</h3><p>Add, remove and smooth brushes work on a depth map of the plate, so an edit never folds the surface. Strokes can be painted first and applied together. Wall thickness can be set uniform or graded, with anything under the 1.0&nbsp;mm print floor shown in red.</p></div>
+        <div class="card"><h3>See what a plate does to the tissue</h3><p>The editor estimates where the plate presses, where it leaves a gap, and how both change with an edit, with arrows for the push on each segment. The tissue model's stiffness is an assumption, because no infant tissue data exists, and the window says so.</p></div>
+        <div class="card"><h3>Cut out, grow and shrink <span class="tag">next</span></h3><p><em>Cut out</em> removes a painted region, for example a window over a sore spot. <em>Plate edge</em> grows or shrinks the outline where the stage has a drawn border. An edit can be carried to every later plate that has not been delivered. Each plate lists the edits it carries, and each one can be removed.</p></div>
+        <div class="card"><h3>Arms when you want them; a closer seat</h3><p>New cases build plates without retention arms. The editor adds them, either where the app places them or at sites the clinician picks. <em>Seat closely</em> sizes the cleft block-out to the cleft instead of over-filling the tips, which raised contact on the greater segment from 79&nbsp;% to 86&nbsp;% on plate 0 of this case.</p></div>
+        <div class="card"><h3>Stone models and suggested cleanup</h3><p>On import, the app offers to remove a model's base and plinth walls and any loose specks. A preview shows exactly what would go, and declining is recorded.</p></div>
+        <div class="card"><h3>Undo everywhere</h3><p>Undo and redo buttons on the step rail cover cleaning, segment rebuilds, marks, drawn borders and arm sites. Each tooltip says what will be undone. The Movement window has its own undo for handle drags.</p></div>
+      </div>
+    </div>
+  </section>
 
   <section id="pipeline">
     <div class="wrap">
       <h2>How it works</h2>
       <p class="sub">Seven guided steps. At each one the app builds a proposal, and the clinician inspects it, edits it and approves it. Sending a step back withdraws its approval and every approval after it, and the app says which.</p>
       <div class="pipeline">
-        <div class="card"><h3>Case</h3><p>Import a de-identified <code>.stl</code>, <code>.ply</code> or <code>.obj</code> scan of the upper jaw. Remove the flaps that scanner stitching leaves. Record the diagnosis, the arch and the visit and surgery dates. Left/right and mirroring cannot be measured from a scan, so they are the clinician's assertions.</p></div>
+        <div class="card"><h3>Case</h3><p>Import a de-identified <code>.stl</code>, <code>.ply</code> or <code>.obj</code> scan of the upper jaw, intraoral or of a stone model. Accept or decline the suggested cleanup (a model's base and walls, loose specks), and remove the flaps that scanner stitching leaves. Record the diagnosis, the arch and the visit and surgery dates. Left/right and mirroring cannot be measured from a scan, so they are the clinician's assertions.</p></div>
         <div class="card"><h3>Anatomy</h3><p>A classifier fits the alveolar crest, counts the interruptions along it (intact, unilateral or bilateral) and sets an anatomical frame. It measures cleft width, arch length, posterior width and premaxilla position. The clinician can declare the cleft type: the classifier then looks for a reading of that type that passes every check, or stops. It never invents a cleft.</p></div>
         <div class="card"><h3>Segments</h3><p>The app paints the greater and lesser segments (unilateral) or the premaxilla and both laterals (bilateral), plus the cleft margin, the stable palate and the plate extent. The clinician corrects it with a brush; <em>Fill in the rest</em> completes the painting around their strokes and never overwrites them.</p></div>
-        <div class="card"><h3>Plan: key poses</h3><p>Treatment is a list of phases, for example expand, retract, then approximate. For each phase the clinician drags each segment to its end pose and says whether it <strong>moves</strong>, <strong>grows</strong> or <strong>holds</strong>. The app stages plates between the poses, spread over the visits before surgery, within ceilings of 1&nbsp;mm per week and per plate, and an assumed 1.5° of rotation per week. Plates already made never change.</p></div>
-        <div class="card"><h3>Plates</h3><p>Each plate is shelled over that stage's tissue. The cleft is blocked out with a ball the width of the cleft, the digital version of waxing it out. The app adds retention arms and can extend a flange past the scan's edge, marked <em>inferred</em>. Every plate gets a print verdict and a fit verdict. A plate that fails a check is held. It can be approved over the hold only with a written reason, and the reason is kept.</p></div>
+        <div class="card"><h3>Plan</h3><p>For a unilateral cleft, set the closure in the Movement window: drag the segments' tips, shape the greater segment's curve, pose either segment rigidly, play it through the stages, then draw each stage's plate border. For other clefts, treatment is a list of phases, for example expand, retract, then approximate. For each phase the clinician drags each segment to its end pose and says whether it <strong>moves</strong>, <strong>grows</strong> or <strong>holds</strong>. The app stages plates between the poses, spread over the visits before surgery, within ceilings of 1&nbsp;mm per week and per plate, and an assumed 1.5° of rotation per week. Plates already made never change.</p></div>
+        <div class="card"><h3>Plates</h3><p>Each plate is shelled over that stage's tissue. The cleft is blocked out with a ball the width of the cleft, the digital version of waxing it out. Each plate is cut to its stage's drawn border. Retention arms are added in the plate editor. The editor also edits the plate itself (brushes, wall thickness, cut-outs, edge) and shows the estimated tissue pressure. A flange past the scan's edge is marked <em>inferred</em>. Every plate gets a print verdict and a fit verdict. A plate that fails a check is held. It can be approved over the hold only with a written reason, and the reason is kept.</p></div>
         <div class="card"><h3>Print</h3><p>The plates themselves, oriented, supported and nested for a resin printer (Asiga MAX X27, Asiga PRO 4K65, Phrozen Sonic Mini 8K, or your own profile), or thermoforming models. The output is STL and 3MF with a job sheet, and every number and file hash is recorded.</p></div>
         <div class="card"><h3>Follow-up</h3><p>Register a visit's scan to the plan on the stable palate. The deviation map shows the scan's own measurement floor (about 0.9&nbsp;mm) beside every statistic. The clinician can record the visit, or adopt the new scan and re-plan from it; delivered plates stay as they are.</p></div>
       </div>
@@ -123,6 +147,7 @@
           <li>Newborn scans stop short of the vestibule, so the flange past the scan's edge is inferred and must be fitted chairside.</li>
           <li>No nasal stent: an intraoral scan does not capture the external nose.</li>
           <li>Growth and rotation rates are assumptions; there is no published per-week figure for either.</li>
+          <li>The tissue pressure estimate uses assumed stiffness values. It shows where a plate presses, not how hard.</li>
         </ul></div>
         <div class="card"><ul>
           <li>Scans can differ by about 0.5–0.9&nbsp;mm with no change in the patient, so smaller deviations are not findings.</li>
