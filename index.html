@@ -19,7 +19,7 @@
       <a class="opt" href="#safety">Safety</a>
       <a class="opt" href="#research">Research</a>
       <a href="walkthrough.html"><span class="long">Clinician </span>walkthrough</a>
-      <a href="#download">Download</a>
+      <a href="download.html">Download</a>
     </nav>
   </div>
 </header>
@@ -29,7 +29,7 @@
     <h1>From an infant's intraoral scan to a series of NAM plates.</h1>
     <p class="lead">MoldStudio reads an intraoral scan, or a scan of a stone model, and finds the cleft and the alveolar segments. The clinician drags each segment to where it should end up and draws where each plate should end. The app divides that movement into plates timed to the visits before surgery, checks every plate, and prepares the plates for 3D printing or thermoforming. The clinician reviews, edits and approves each step.</p>
     <div class="cta">
-      <a class="btn primary" href="#download">Download for macOS <small>Apple Silicon</small></a>
+      <a class="btn primary" href="download.html">Download Alpha3 <small>Apple Silicon</small></a>
       <a class="btn" href="walkthrough.html">Walk through the app</a>
     </div>
     <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. A generated file, an approval or a passing software check does not show that a plate fits or works. The treating clinician is responsible for every design and every clinical decision. Everything runs on your Mac, with no account. Sending usage information or cases to the MoldStudio team is off unless you turn it on; see <a href="privacy.html">Privacy</a>.</div>
@@ -45,7 +45,7 @@
   <section id="new">
     <div class="wrap">
       <h2>What's new</h2>
-      <p class="sub">Since the first public release, MoldStudio has been rebuilt around one real right unilateral case, scanned from a stone model. The pictures on this site come from that case. These changes are in the development build and come with the next update; the download below is the current public release.</p>
+      <p class="sub">Since the first public release, MoldStudio has been rebuilt around one real right unilateral case, scanned from a stone model. The pictures on this site come from that case. All of it is in <strong>MoldStudio Alpha3</strong>, which you can <a href="download.html">download now</a>.</p>
       <figure class="shot" style="margin-bottom:22px">
         <img src="assets/shots/series.webp" alt="Thirteen plates, the fit plate and plates 1 to 12, each over the predicted tissue of its stage" loading="lazy">
         <figcaption>The whole series for the case: the fit plate and twelve weekly plates, each drawn over the tissue predicted for its stage. Each plate is cut to the border the clinician drew for that stage.</figcaption>
@@ -57,7 +57,7 @@
         <div class="card"><h3>Draw each plate's border</h3><p>After the movement is posed, the clinician draws where the plate ends on each stage's predicted tissue. The first stage's line can be copied forward and edited. Each plate is cut to its line plus an allowance (1.5&nbsp;mm in this case) and its edge is rounded. A piece cut off inside the line holds the plate.</p></div>
         <div class="card"><h3>A plate editor that paints, then applies</h3><p>Add, remove and smooth brushes work on a depth map of the plate, so an edit never folds the surface. Strokes can be painted first and applied together. Wall thickness can be set uniform or graded, with anything under the 1.0&nbsp;mm print floor shown in red.</p></div>
         <div class="card"><h3>See what a plate does to the tissue</h3><p>The editor estimates where the plate presses, where it leaves a gap, and how both change with an edit, with arrows for the push on each segment. The tissue model's stiffness is an assumption, because no infant tissue data exists, and the window says so.</p></div>
-        <div class="card"><h3>Cut out, grow and shrink <span class="tag">next</span></h3><p><em>Cut out</em> removes a painted region, for example a window over a sore spot. <em>Plate edge</em> grows or shrinks the outline where the stage has a drawn border. An edit can be carried to every later plate that has not been delivered. Each plate lists the edits it carries, and each one can be removed.</p></div>
+        <div class="card"><h3>Cut out, grow and shrink</h3><p><em>Cut out</em> removes a painted region, for example a window over a sore spot. <em>Plate edge</em> grows or shrinks the outline where the stage has a drawn border. An edit can be carried to every later plate that has not been delivered. Each plate lists the edits it carries, and each one can be removed.</p></div>
         <div class="card"><h3>Arms when you want them; a closer seat</h3><p>New cases build plates without retention arms. The editor adds them, either where the app places them or at sites the clinician picks. <em>Seat closely</em> sizes the cleft block-out to the cleft instead of over-filling the tips, which raised contact on the greater segment from 79&nbsp;% to 86&nbsp;% on plate 0 of this case.</p></div>
         <div class="card"><h3>Stone models and suggested cleanup</h3><p>On import, the app offers to remove a model's base and plinth walls and any loose specks. A preview shows exactly what would go, and declining is recorded.</p></div>
         <div class="card"><h3>Undo everywhere</h3><p>Undo and redo buttons on the step rail cover cleaning, segment rebuilds, marks, drawn borders and arm sites. Each tooltip says what will be undone. The Movement window has its own undo for handle drags.</p></div>
@@ -164,12 +164,13 @@
       <h2>Download</h2>
       <p class="sub">MoldStudio for macOS, research alpha. Needs an Apple Silicon Mac (M1 or later) with macOS 15 or later, and about 2&nbsp;GB of free disk space. No internet is needed after the download.</p>
       <div class="cta">
-        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/latest/download/MoldStudio-macOS-arm64.zip">Download MoldStudio <small>zip, about 250&nbsp;MB</small></a>
-        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/latest">Release notes and checksum</a>
+        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/alpha3/MoldStudio-Alpha3-macOS-arm64.zip">Download MoldStudio Alpha3 <small>zip, about 255&nbsp;MB</small></a>
+        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip">Release 1 (previous)</a>
+        <a class="btn" href="download.html#alpha3">What changed in Alpha3</a>
       </div>
       <div class="grid g2" style="margin-top:24px">
         <div class="card"><h3>First launch</h3><ol class="steps-list" style="color:var(--muted);font-size:15px;margin:6px 0 0">
-          <li>Unzip the download and drag <code>MoldStudioV2.app</code> into Applications.</li>
+          <li>Unzip the download and drag <code>MoldStudioAlpha3.app</code> into Applications.</li>
           <li>Open it. macOS will block it, because the app is not notarized.</li>
           <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong> for MoldStudio, and confirm.</li>
           <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>

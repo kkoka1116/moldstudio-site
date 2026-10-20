@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download MoldStudio</title>
+<meta name="description" content="Download MoldStudio Alpha3 or the previous release for Apple Silicon Macs, and see what changed in Alpha3.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark">M</span>MoldStudio</a>
+    <nav>
+      <a class="opt" href="index.html#new">What's new</a>
+      <a class="opt" href="index.html#pipeline">How it works</a>
+      <a href="walkthrough.html"><span class="long">Clinician </span>walkthrough</a>
+      <a href="download.html" aria-current="page">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero" style="padding-bottom:20px">
+    <h1>Download MoldStudio</h1>
+    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account, and the two can be installed side by side.</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <span class="tag">New</span>
+      <h3 style="margin-top:8px">MoldStudio Alpha3</h3>
+      <p>The unilateral closure tools, per-stage plate borders and the plate editor shown on this site. Build alpha-a06434237d76, about 255&nbsp;MB.</p>
+      <div class="cta" style="margin-top:14px">
+        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/alpha3/MoldStudio-Alpha3-macOS-arm64.zip">Download Alpha3 <small>zip, about 255&nbsp;MB</small></a>
+      </div>
+      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">52d2ad8d2a5b79965bfb9a8140dfa00753601f7971fdda76387d6892e2c2bf84</code></p>
+    </div>
+    <div class="card">
+      <span class="tag warn">Previous</span>
+      <h3 style="margin-top:8px">MoldStudio release 1</h3>
+      <p>The first public release (September 2026), with key-pose planning for every cleft type and the signed update feed.</p>
+      <div class="cta" style="margin-top:14px">
+        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip">Download release 1 <small>zip, about 250&nbsp;MB</small></a>
+      </div>
+      <p class="fine" style="margin-top:10px"><a href="https://github.com/kkoka1116/moldstudio-site/releases">All releases, notes and checksums</a></p>
+    </div>
+  </div>
+
+  <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. Inspect and fit every plate. Nothing the software reports replaces clinical judgement.</div>
+
+  <section id="alpha3" style="border-top:0;padding-top:40px">
+    <h2>What changed in Alpha3</h2>
+    <p class="sub">Alpha3 was rebuilt around one real right unilateral case, scanned from a stone model.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Plan: close a unilateral cleft</h3><ul>
+        <li>The Movement window: drag the greater segment's tip, where its curve starts, and how far the lesser comes across. Play through the stages, and read the gap and travel at each one.</li>
+        <li>Rigid pose for each segment (forward, across, height, turn, tilt, roll), anchored on the tuberosities. Drag a crest line, or Shift-drag to turn it.</li>
+        <li>Soft tissue follows its own segment, so the predicted cleft lining no longer folds.</li>
+        <li>A Movement window left open, unplanned, reopens with the case.</li>
+      </ul></div>
+      <div class="card"><h3>Plate borders</h3><ul>
+        <li>Draw where each plate ends on each stage's predicted tissue, and carry the line forward.</li>
+        <li>Each plate is cut to its line plus an allowance and its edge is rounded.</li>
+        <li>A piece cut off inside the line stops the plate (PIECE_DROPPED).</li>
+      </ul></div>
+      <div class="card"><h3>The plate editor</h3><ul>
+        <li>Add, Remove and Smooth brushes on a depth map, so an edit cannot fold the surface. Paint several strokes first, then apply them together.</li>
+        <li>Wall thickness, uniform or graded, with the plate coloured by wall and red under the 1.0&nbsp;mm print floor.</li>
+        <li><strong>Cut out</strong>: paint a region and remove it, for example a window. A cut that would split the plate is refused.</li>
+        <li><strong>Plate edge</strong>: grow or shrink the outline where the stage has a drawn border, and carry it to later stages.</li>
+        <li>Tissue pressure, gap and compression estimates, with each segment's push against its planned movement.</li>
+        <li>Edits can be carried to every later plate not yet delivered. Each plate lists its edits, and each one can be removed.</li>
+      </ul></div>
+      <div class="card"><h3>Retention and fit</h3><ul>
+        <li>Plates are built without retention arms by default. Add them in the editor, either placed by the app or at sites you pick. <em>No arms</em> takes them off again.</li>
+        <li>Changing the arms marks the plates for rebuilding but keeps the movement approvals.</li>
+        <li><em>Seat closely</em> sizes the cleft block-out to the cleft rather than over-filling the tips. On plate 0 of the example case, contact on the greater segment rose from 79&nbsp;% to 86&nbsp;%, and on the lesser from 76&nbsp;% to 88&nbsp;%.</li>
+        <li>A fix for plates the activation check holds for lack of retention: rebuild them with a retention grip.</li>
+      </ul></div>
+      <div class="card"><h3>Case and cleanup</h3><ul>
+        <li>Suggested cleanup on import: removes a stone model's base, its plinth walls and loose specks, with a preview. Declining is recorded.</li>
+        <li>Undo and redo on the step rail cover cleaning, segment rebuilds, marks, borders and arm sites.</li>
+      </ul></div>
+      <div class="card"><h3>Fixes</h3><ul>
+        <li>In manual planning, the Plan step's <em>Approve and continue</em> was hidden, so Plan could never be signed. It now appears once every stage is approved.</li>
+        <li>Approving Plan no longer rebuilds every plate; plates already built from the approved stages are kept.</li>
+        <li>The plan form no longer marks itself edited when a segment appears on the painting.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+    <div class="grid g2">
+      <div class="card"><h3>First launch</h3><ol class="steps-list" style="color:var(--muted);font-size:15px;margin:6px 0 0">
+        <li>Unzip the download and drag <code>MoldStudioAlpha3.app</code> (or <code>MoldStudioV2.app</code> for release 1) into Applications.</li>
+        <li>Open it. macOS will block it, because the app is not notarized.</li>
+        <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong>, and confirm.</li>
+        <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
+      </ol></div>
+      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha3 keeps its own settings and recovery points, separate from release 1. Sharing with the MoldStudio team is opt-in; see <a href="privacy.html">Privacy</a>.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">MoldStudio · research alpha · not a medical device. · <a href="index.html">Home</a> · <a href="walkthrough.html">Walkthrough</a> · <a href="privacy.html">Privacy</a></div>
+</footer>
+</body>
+</html>
