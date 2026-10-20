@@ -1,11 +1,11 @@
 {
- "algorithm_version": 2,
- "build_id": "alpha-794ffd69cf94",
- "notes": "First release with automatic updates, opt-in sharing and the plate-safety checks. Install this one by hand; later releases arrive in the app.",
- "published": "2026-09-30",
- "sequence": 1,
- "sha256": "c8aa107cfe9524f24428ef4bc4b278293bfab6818c6e9132a78085de7a04ea98",
- "size": 254385648,
- "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip",
+ "algorithm_version": 3,
+ "build_id": "alpha-8a3e5c1a23a9",
+ "notes": "MoldStudio Alpha3: close a unilateral cleft with handles, draw each plate's border, and edit plates directly (brushes, wall thickness, cut out, plate edge, tissue pressure). Arms are now added in the plate editor. Open cases need re-approval after updating.",
+ "published": "2026-10-20",
+ "sequence": 5,
+ "sha256": "907f42fa5c448b42b310ebb85484f95128acfebf8b9af155dd3c877bbaf23ec9",
+ "size": 254939286,
+ "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/alpha3/MoldStudio-Alpha3-macOS-arm64.zip",
  "version": "0.1.0"
 }

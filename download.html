@@ -25,18 +25,18 @@
 <main class="wrap">
   <div class="hero" style="padding-bottom:20px">
     <h1>Download MoldStudio</h1>
-    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account, and the two can be installed side by side.</p>
+    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. Alpha3 is the latest release: installed copies of release 1 offer it as an update and install it when you quit.</p>
   </div>
 
   <div class="grid g2">
     <div class="card">
       <span class="tag">New</span>
       <h3 style="margin-top:8px">MoldStudio Alpha3</h3>
-      <p>The unilateral closure tools, per-stage plate borders and the plate editor shown on this site. Build alpha-a06434237d76, about 255&nbsp;MB.</p>
+      <p>The unilateral closure tools, per-stage plate borders and the plate editor shown on this site. Build alpha-8a3e5c1a23a9, about 255&nbsp;MB.</p>
       <div class="cta" style="margin-top:14px">
         <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/alpha3/MoldStudio-Alpha3-macOS-arm64.zip">Download Alpha3 <small>zip, about 255&nbsp;MB</small></a>
       </div>
-      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">52d2ad8d2a5b79965bfb9a8140dfa00753601f7971fdda76387d6892e2c2bf84</code></p>
+      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">907f42fa5c448b42b310ebb85484f95128acfebf8b9af155dd3c877bbaf23ec9</code></p>
     </div>
     <div class="card">
       <span class="tag warn">Previous</span>
@@ -96,12 +96,12 @@
     <h2>Install</h2>
     <div class="grid g2">
       <div class="card"><h3>First launch</h3><ol class="steps-list" style="color:var(--muted);font-size:15px;margin:6px 0 0">
-        <li>Unzip the download and drag <code>MoldStudioAlpha3.app</code> (or <code>MoldStudioV2.app</code> for release 1) into Applications.</li>
+        <li>Unzip the download and drag the app into Applications. If release 1 is already installed, you do not need to download anything: open it and choose <em>Install when I quit</em> when it offers Alpha3.</li>
         <li>Open it. macOS will block it, because the app is not notarized.</li>
         <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong>, and confirm.</li>
         <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
       </ol></div>
-      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha3 keeps its own settings and recovery points, separate from release 1. Sharing with the MoldStudio team is opt-in; see <a href="privacy.html">Privacy</a>.</p></div>
+      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha3 replaces release 1 and keeps its settings and recovery points. The previous version is kept as a backup when it updates. Alpha3 builds plates with a newer algorithm version, so cases opened in release 1 ask to be re-approved and their plates rebuilt; finish a case before updating. Sharing with the MoldStudio team is opt-in; see <a href="privacy.html">Privacy</a>.</p></div>
     </div>
   </section>
 </main>
