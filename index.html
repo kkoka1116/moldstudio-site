@@ -8,6 +8,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+.viewer-block{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+.viewer-head{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.viewer-head p{margin:0;color:var(--muted);font-size:14px;max-width:60ch}
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:500 14px var(--font);background:var(--surface);color:var(--text);border:0;border-right:1px solid var(--line);padding:8px 13px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.viewer{position:relative;height:clamp(300px,52vw,520px);background:var(--surface-2);touch-action:none}
+.viewer canvas{display:block;width:100%;height:100%}
+.viewer-msg{position:absolute;inset:0;display:grid;place-items:center;padding:16px;text-align:center;color:var(--muted);font-size:14px;margin:0}
+.key{display:inline-block;width:.8em;height:.8em;border-radius:2px;vertical-align:-.05em;margin-right:.25em}
+</style>
 </head>
 <body>
 <header class="top">
@@ -15,6 +29,7 @@
     <a class="brand" href="index.html"><span class="mark">M</span>MoldStudio</a>
     <nav>
       <a class="opt" href="#new">What's new</a>
+      <a class="opt" href="#view3d">3D view</a>
       <a class="opt" href="#pipeline">How it works</a>
       <a class="opt" href="#safety">Safety</a>
       <a class="opt" href="#research">Research</a>
@@ -61,6 +76,25 @@
         <div class="card"><h3>Arms when you want them; a closer seat</h3><p>New cases build plates without retention arms. The editor adds them, either where the app places them or at sites the clinician picks. <em>Seat closely</em> sizes the cleft block-out to the cleft instead of over-filling the tips, which raised contact on the greater segment from 79&nbsp;% to 86&nbsp;% on plate 0 of this case.</p></div>
         <div class="card"><h3>Stone models and suggested cleanup</h3><p>On import, the app offers to remove a model's base and plinth walls and any loose specks. A preview shows exactly what would go, and declining is recorded.</p></div>
         <div class="card"><h3>Undo everywhere</h3><p>Undo and redo buttons on the step rail cover cleaning, segment rebuilds, marks, drawn borders and arm sites. Each tooltip says what will be undone. The Movement window has its own undo for handle drags.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view3d">
+    <div class="wrap">
+      <h2>Turn the case around</h2>
+      <p class="sub">The same case in 3D: the predicted tissue the app builds plates on, at the start and at week 12, with the fit plate and plate 12 seated on it. Drag to rotate and scroll or pinch to zoom.</p>
+      <div class="viewer-block">
+        <div class="viewer-head">
+          <p><span class="key" style="background:#5692d6"></span>Greater segment &nbsp; <span class="key" style="background:#e89646"></span>Lesser segment &nbsp; <span class="key" style="background:#8fbfe6;opacity:.8"></span>Plate</p>
+          <div class="seg" role="group" aria-label="What to show">
+            <button type="button" id="v-t0" aria-pressed="true">Start</button>
+            <button type="button" id="v-t12" aria-pressed="false">Week 12</button>
+            <button type="button" id="v-p0" aria-pressed="false">Fit plate</button>
+            <button type="button" id="v-p12" aria-pressed="false">Plate 12</button>
+          </div>
+        </div>
+        <div id="viewer" class="viewer" aria-label="Interactive 3D view of the case"><p class="viewer-msg">Loading the 3D view…</p></div>
       </div>
     </div>
   </section>
@@ -186,5 +220,54 @@
 <footer>
   <div class="wrap">MoldStudio · research alpha · not a medical device. Built with Instant Meshes, OpenSubdiv, OpenVDB, Qt and VTK; see the third-party licences shipped with the app. · <a href="walkthrough.html"><span class="long">Clinician </span>walkthrough</a> · <a href="privacy.html">Privacy</a></div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="meshes.js"></script>
+<script>
+(function(){
+  const box = document.getElementById('viewer');
+  const msg = box.querySelector('.viewer-msg');
+  if (!window.THREE || !THREE.OrbitControls || !window.MS_MESHES) {
+    msg.textContent = 'The 3D view needs an internet connection to load. The pictures on this page show the same case.';
+    return;
+  }
+  const dec = s => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u.buffer; };
+  function geom(e){
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(dec(e.v)), 3));
+    g.setIndex(new THREE.BufferAttribute(new Uint32Array(dec(e.f)), 1));
+    if (e.c) g.setAttribute('color', new THREE.BufferAttribute(new Uint8Array(dec(e.c)), 3, true));
+    g.computeVertexNormals();
+    return g;
+  }
+  const G = {}; for (const k in MS_MESHES) G[k] = geom(MS_MESHES[k]);
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  box.appendChild(renderer.domElement); msg.remove();
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, 1, 1000);
+  // seen from the mouth: the mouth side is -z, the front of the arch (+y) at the top of the screen
+  camera.position.set(0, -30, -88); camera.up.set(0, 1, 0);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0, 0); controls.enableDamping = true; controls.minDistance = 40; controls.maxDistance = 250;
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a9894, 0.75));
+  const key = new THREE.DirectionalLight(0xffffff, 0.65); camera.add(key); key.position.set(30, 40, 0); scene.add(camera);
+  const tissueMat = new THREE.MeshStandardMaterial({vertexColors:true, roughness:.75, metalness:0, side:THREE.DoubleSide});
+  const plateMat = new THREE.MeshStandardMaterial({color:0x8fbfe6, roughness:.3, metalness:0, transparent:true, opacity:.62, side:THREE.DoubleSide, depthWrite:false});
+  const M = {t0:new THREE.Mesh(G.t0, tissueMat), t12:new THREE.Mesh(G.t12, tissueMat), p0:new THREE.Mesh(G.p0, plateMat), p12:new THREE.Mesh(G.p12, plateMat)};
+  const views = {'v-t0':['t0'], 'v-t12':['t12'], 'v-p0':['t0','p0'], 'v-p12':['t12','p12']};
+  for (const k in M) { M[k].visible = false; scene.add(M[k]); }
+  M.p0.renderOrder = M.p12.renderOrder = 1;
+  function show(id){
+    for (const k in M) M[k].visible = views[id].includes(k);
+    document.querySelectorAll('#view3d .seg button').forEach(b => b.setAttribute('aria-pressed', String(b.id === id)));
+  }
+  document.querySelectorAll('#view3d .seg button').forEach(b => b.addEventListener('click', () => show(b.id)));
+  show('v-t0');
+  function size(){ const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+  new ResizeObserver(size).observe(box); size();
+  (function loop(){ controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+})();
+</script>
 </body>
 </html>
