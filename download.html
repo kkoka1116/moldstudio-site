@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Download MoldStudio</title>
-<meta name="description" content="Download MoldStudio Alpha3 or the previous release for Apple Silicon Macs, and see what changed in Alpha3.">
+<meta name="description" content="Download MoldStudio Alpha4 or the previous releases for Apple Silicon Macs, and see what changed in Alpha4 and Alpha3.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -25,33 +25,57 @@
 <main class="wrap">
   <div class="hero" style="padding-bottom:20px">
     <h1>Download MoldStudio</h1>
-    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. Alpha3 is the latest release: installed copies of release 1 offer it as an update and install it when you quit.</p>
+    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. Alpha4 is the latest release: installed copies of Alpha3 and release 1 offer it as an update and install it when you quit.</p>
   </div>
 
   <div class="grid g2">
     <div class="card">
       <span class="tag">New</span>
-      <h3 style="margin-top:8px">MoldStudio Alpha3</h3>
-      <p>The unilateral closure tools, per-stage plate borders and the plate editor shown on this site. Build alpha-0db5c3a0ba8d, about 255&nbsp;MB.</p>
+      <h3 style="margin-top:8px">MoldStudio Alpha4</h3>
+      <p>Alpha3's tools, faster saves and plate rebuilds, cleaner case folders, and sharing for clinics. Build alpha-1560152a6fd9, about 255&nbsp;MB.</p>
       <div class="cta" style="margin-top:14px">
-        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r6/MoldStudio-Alpha3-macOS-arm64.zip">Download Alpha3 <small>zip, about 255&nbsp;MB</small></a>
+        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r7/MoldStudio-Alpha4-macOS-arm64.zip">Download Alpha4 <small>zip, about 255&nbsp;MB</small></a>
       </div>
-      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">f5deaa581daeafe8719f575dd44ffe740e34e1bb82571ac1b50357e017ef72a0</code></p>
+      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">08b06afc9382358e68987edf35a7297302fad70adac731cb9cdd0a7c17ff85e8</code></p>
     </div>
     <div class="card">
       <span class="tag warn">Previous</span>
-      <h3 style="margin-top:8px">MoldStudio release 1</h3>
-      <p>The first public release (September 2026), with key-pose planning for every cleft type and the signed update feed.</p>
+      <h3 style="margin-top:8px">MoldStudio Alpha3</h3>
+      <p>The unilateral closure tools, per-stage plate borders and the plate editor shown on this site. Build alpha-0db5c3a0ba8d, about 255&nbsp;MB.</p>
       <div class="cta" style="margin-top:14px">
-        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip">Download release 1 <small>zip, about 250&nbsp;MB</small></a>
+        <a class="btn" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r6/MoldStudio-Alpha3-macOS-arm64.zip">Download Alpha3 <small>zip, about 255&nbsp;MB</small></a>
       </div>
-      <p class="fine" style="margin-top:10px"><a href="https://github.com/kkoka1116/moldstudio-site/releases">All releases, notes and checksums</a></p>
+      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">f5deaa581daeafe8719f575dd44ffe740e34e1bb82571ac1b50357e017ef72a0</code> · <a href="https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip">Release 1</a> · <a href="https://github.com/kkoka1116/moldstudio-site/releases">All releases, notes and checksums</a></p>
     </div>
   </div>
 
   <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. Inspect and fit every plate. Nothing the software reports replaces clinical judgement.</div>
 
-  <section id="alpha3" style="border-top:0;padding-top:40px">
+  <section id="alpha4" style="border-top:0;padding-top:40px">
+    <h2>What changed in Alpha4</h2>
+    <p class="sub">Alpha4 makes the app faster and lets clinics share their work. The plates it builds are the same as Alpha3's, vertex for vertex, and the algorithm version is unchanged, so a case from Alpha3 opens with its approvals and plates intact.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Faster, without freezes</h3><ul>
+        <li>Save takes under 2 seconds. It took 18 to 26 seconds on a thirteen-plate case and looked like a hang.</li>
+        <li><em>Build all approved</em> no longer freezes the window while the plates are queued.</li>
+        <li>Rebuilding a series after a border, arm or seating edit is about four times faster: 202 seconds instead of 873 for the thirteen-plate example case, with every plate identical. A first build is about a fifth faster.</li>
+      </ul></div>
+      <div class="card"><h3>Case folders stay small</h3><ul>
+        <li>Finished plate builds remove their working folder. Opening a case clears stale build folders, unreferenced caches and old replaced plates; the example case shed 1.2&nbsp;GB. Build logs are kept, and delivered plates are never touched.</li>
+      </ul></div>
+      <div class="card"><h3>Sharing with the MoldStudio team</h3><ul>
+        <li>Usage information is on by default. The first launch shows a notice with a one-click <em>Don't send usage information</em>; it holds no patient data and no geometry.</li>
+        <li>A clinic can share into a folder it provides, for example a synced Drive or OneDrive folder, instead of an endpoint.</li>
+        <li>A case marked <em>Research consent on file</em> on the Case step is shared automatically after each plate is built or exported, with the same de-identification as before. Other cases are shared only by hand, one at a time.</li>
+      </ul></div>
+      <div class="card"><h3>Also</h3><ul>
+        <li>The usage log records how long a case takes to open and save and how long each plate takes to build.</li>
+        <li>Alpha3's tools are unchanged; see below.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="alpha3">
     <h2>What changed in Alpha3</h2>
     <p class="sub">Alpha3 was rebuilt around one real right unilateral case, scanned from a stone model.</p>
     <div class="grid g2">
@@ -96,12 +120,12 @@
     <h2>Install</h2>
     <div class="grid g2">
       <div class="card"><h3>First launch</h3><ol class="steps-list" style="color:var(--muted);font-size:15px;margin:6px 0 0">
-        <li>Unzip the download and drag the app into Applications. If release 1 is already installed, you do not need to download anything: open it and choose <em>Install when I quit</em> when it offers Alpha3.</li>
+        <li>Unzip the download and drag the app into Applications. If Alpha3 or release 1 is already installed, you do not need to download anything: open it and choose <em>Install when I quit</em> when it offers Alpha4.</li>
         <li>Open it. macOS will block it, because the app is not notarized.</li>
         <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong>, and confirm.</li>
         <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
       </ol></div>
-      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha3 replaces release 1 and keeps its settings and recovery points. The previous version is kept as a backup when it updates. Alpha3 builds plates with a newer algorithm version, so cases opened in release 1 ask to be re-approved and their plates rebuilt; finish a case before updating. Sharing with the MoldStudio team is opt-in; see <a href="privacy.html">Privacy</a>.</p></div>
+      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha4 replaces Alpha3 and keeps its settings and recovery points; the previous version is kept as a backup when it updates. Alpha4 and Alpha3 build plates with the same algorithm version, so a case from Alpha3 keeps its approvals and plates. Cases from release 1 ask to be re-approved and their plates rebuilt; finish such a case before updating. Usage information is sent by default and can be turned off at the first launch or under Help; a case is shared only by hand or when you mark it as consented. See <a href="privacy.html">Privacy</a>.</p></div>
     </div>
   </section>
 </main>

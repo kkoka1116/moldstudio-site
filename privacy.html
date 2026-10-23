@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MoldStudio Privacy</title>
-<meta name="description" content="What MoldStudio shares with its developers, only when you turn it on, and what it never shares.">
+<meta name="description" content="What MoldStudio shares with its developers, how to turn it off, and what it never shares.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -25,11 +25,11 @@
 <main class="wrap">
   <div class="hero" style="padding-bottom:10px">
     <h1>What MoldStudio shares</h1>
-    <p class="lead">Nothing, until you turn it on. The first launch asks once, and you can change your answer at any time under Help › Sharing and privacy.</p>
+    <p class="lead">Usage information, which holds no patient data, is sent by default; the first launch says so and offers a one-click off. A case is never sent on its own: only when you share it by hand, or when you have marked that case as having research consent on file. You can change any of this at any time under Help › Sharing and privacy.</p>
   </div>
   <section>
     <h2>Usage information</h2>
-    <p class="sub">Opt-in. Used to improve the app.</p>
+    <p class="sub">On by default since Alpha4, with a one-click off at the first launch and under Help. Used to improve the app. The app carries a built-in destination whose key can post usage files and nothing else; it cannot upload a case.</p>
     <div class="grid g2">
       <div class="card"><h3>Sent</h3><ul><li>Which steps are built and approved, and how long builds take</li><li>What kinds of edits are made: paint, erase, cage, key pose</li><li>Plate verdicts, print jobs, error types</li><li>A random token for each case, which cannot be traced back to the case outside your Mac</li></ul></div>
       <div class="card"><h3>Never sent</h3><ul><li>Scans or any geometry</li><li>Names, file or folder names, notes, free text</li><li>Dates, other than the time of each event</li></ul><p style="margin-top:8px">The format is an allowlist enforced in the app's code: anything not on it is dropped.</p></div>
@@ -37,12 +37,12 @@
   </section>
   <section>
     <h2>Shared cases</h2>
-    <p class="sub">Opt-in, one case at a time, for research. Only when you choose Help › Share this case for research, review exactly what it contains, and confirm the patient's family has given the consent your clinic's agreement requires.</p>
+    <p class="sub">Opt-in, for research. By hand: choose Help › Share this case for research, review exactly what it contains, and confirm the patient's family has given the consent your clinic's agreement requires. Automatically: only for a case you have marked <em>Research consent on file</em> on the Case step; it is then shared after each plate is built or exported, with the same contents and the same checks. Ticking the box withdraws no approval, and untick it to stop.</p>
     <div class="grid g2">
       <div class="card"><h3>Included</h3><ul><li>The scan geometry, the segmentation, the plan and key poses</li><li>Stage approvals, the plates and their reports</li><li>Diagnosis fields: LAHSHAL, side, arch, age in days</li><li>The order in which operations were done</li></ul></div>
       <div class="card"><h3>Removed</h3><ul><li>Names, notes, override reasons and other free text</li><li>Scanner, file names and paths, the case id</li><li>Calendar dates, which become days after the scan</li></ul><p style="margin-top:8px">Before a package is written, it is searched for the case folder's name, the scan's file name and the painter, and refused if any is found.</p></div>
     </div>
-    <div class="notice">Without an enrolment code from the MoldStudio team, nothing leaves your Mac: usage stays in the app's support folder, and a shared case can be saved as a file instead.</div>
+    <div class="notice">Where it goes: usage files go to the MoldStudio team's inbox through the built-in destination, or to the destination your clinic enrolled with. A shared case goes only to your clinic's enrolled endpoint or to a folder your clinic chose under Help › Sharing and privacy, for example a synced Drive or OneDrive folder; without one, a shared case is saved as a file for you to send. The inbox is pulled to the team's own computer and emptied; nothing is kept in the cloud.</div>
   </section>
   <section>
     <h2>Updates</h2>

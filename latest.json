@@ -1,11 +1,11 @@
 {
  "algorithm_version": 5,
- "build_id": "alpha-0db5c3a0ba8d",
- "notes": "Restores the r3 review fixes and the dropped-piece check against drawn borders. Open cases will ask for re-approval after updating (algorithm version 5).",
- "published": "2026-10-20",
- "sequence": 6,
- "sha256": "f5deaa581daeafe8719f575dd44ffe740e34e1bb82571ac1b50357e017ef72a0",
- "size": 254942842,
- "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r6/MoldStudio-Alpha3-macOS-arm64.zip",
+ "build_id": "alpha-1560152a6fd9",
+ "notes": "Alpha4: Save takes under 2 seconds, Build all approved no longer freezes the window, and a series rebuilds about four times faster after an edit, with identical plates. Finished build folders are removed and case folders are swept on open. Usage information is on by default with a one-click off; clinics can share into a folder; a case marked as having research consent is shared automatically. Same algorithm version 5: open cases keep their approvals and plates.",
+ "published": "2026-10-22",
+ "sequence": 7,
+ "sha256": "08b06afc9382358e68987edf35a7297302fad70adac731cb9cdd0a7c17ff85e8",
+ "size": 254981777,
+ "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r7/MoldStudio-Alpha4-macOS-arm64.zip",
  "version": "0.1.0"
 }
