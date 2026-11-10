@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Download MoldStudio</title>
-<meta name="description" content="Download MoldStudio Alpha4 or the previous releases for Apple Silicon Macs, and see what changed in Alpha4 and Alpha3.">
+<meta name="description" content="Download MoldStudio Alpha4 or the previous releases for Apple Silicon Macs, and see what changed: growth paced by the infant's age, Alpha4 and Alpha3.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -25,18 +25,18 @@
 <main class="wrap">
   <div class="hero" style="padding-bottom:20px">
     <h1>Download MoldStudio</h1>
-    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. Alpha4 is the latest release: installed copies of Alpha3 and release 1 offer it as an update and install it when you quit.</p>
+    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. The 10 November update of Alpha4 is the latest release: installed copies of Alpha4, Alpha3 and release 1 offer it as an update and install it when you quit. It changes the algorithm version, so a case opened in it asks to be re-approved and its plates rebuilt; finish a case in progress before updating.</p>
   </div>
 
   <div class="grid g2">
     <div class="card">
       <span class="tag">New</span>
       <h3 style="margin-top:8px">MoldStudio Alpha4</h3>
-      <p>Alpha3's tools, faster saves and plate rebuilds, cleaner case folders, and sharing for clinics. Build alpha-1560152a6fd9, about 255&nbsp;MB.</p>
+      <p>Alpha3's tools, faster saves and plate rebuilds, sharing for clinics, and, since 10 November, growth paced by the infant's age. Build alpha-904a2300ebee, about 255&nbsp;MB.</p>
       <div class="cta" style="margin-top:14px">
-        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r7/MoldStudio-Alpha4-macOS-arm64.zip">Download Alpha4 <small>zip, about 255&nbsp;MB</small></a>
+        <a class="btn primary" href="https://github.com/kkoka1116/moldstudio-site/releases/download/r8/MoldStudio-Alpha4-macOS-arm64.zip">Download Alpha4 <small>zip, about 255&nbsp;MB</small></a>
       </div>
-      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">08b06afc9382358e68987edf35a7297302fad70adac731cb9cdd0a7c17ff85e8</code></p>
+      <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">4d11286b74b31554eb9b33c3655086a3d1d37ff1eddb67ecc500060bff7b722f</code> · <a href="https://github.com/kkoka1116/moldstudio-site/releases/download/r7/MoldStudio-Alpha4-macOS-arm64.zip">22 October build</a></p>
     </div>
     <div class="card">
       <span class="tag warn">Previous</span>
@@ -51,9 +51,33 @@
 
   <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. Inspect and fit every plate. Nothing the software reports replaces clinical judgement.</div>
 
+  <section id="growth" style="border-top:0;padding-top:40px">
+    <h2>What changed on 10 November: growth by age</h2>
+    <p class="sub">An infant's maxilla grows a great deal during a molding course, and not evenly: a healthy alveolar ridge gains about 0.36&nbsp;mm per week per side at birth and 0.13 at four months, and it deepens front to back much more than it widens. MoldStudio used to assume one flat rate. It now reads the age at scan from the Case step and follows the growth curves that Bruggink and colleagues fitted to 70 healthy newborns, cast at birth and every three months through the first year (<em>Clinical Oral Investigations</em>, 2019).</p>
+    <div class="grid g2">
+      <div class="card"><h3>Growth phases paced by age</h3><ul>
+        <li>A segment the plan expects to grow into a relieved plate, rather than be pushed, is paced by what one side of a healthy ridge gains while each plate is worn, at the infant's age at that visit.</li>
+        <li>If the plan asks for less growth than a healthy ridge would make, the segment can reach the plate and be loaded where it should not be; the plan says so. If it asks for more, the relief would sit empty, and the plan says that too.</li>
+        <li>Without an age at scan, a flat 0.23&nbsp;mm per week applies, the healthy average over the first four months, and the plan says to set the age.</li>
+      </ul></div>
+      <div class="card"><h3>The closure grows the right shape</h3><ul>
+        <li>In a unilateral closure, each stage's tissue now grows as a healthy maxilla does between the fitting and that visit: front to back by the depth curve, side to side by the width curve, instead of one uniform enlargement.</li>
+        <li>The Movement window's handles and the plate borders follow the same growth.</li>
+      </ul></div>
+      <div class="card"><h3>The arch against healthy infants</h3><ul>
+        <li>The Anatomy step sets the posterior arch width, the arch depth and the arch length against healthy infants of the same age. A cleft arch is often outside that range, and the step says why it may be.</li>
+        <li>A value far outside the range warns about the tuberosity landmarks, the scan's units or the age: a 48&nbsp;mm posterior width on a newborn is a wrong landmark or a scan in the wrong units, not a wide arch.</li>
+      </ul></div>
+      <div class="card"><h3>Algorithm version 6</h3><ul>
+        <li>Staged plans change, so a case opened in this update asks to be re-approved and its plates rebuilt. Delivered plates are never changed. Finish a case in progress before updating.</li>
+        <li>The reference is healthy infants without a cleft or a plate: a best available baseline, not a target. The two growth rates reported under passive plates bracket it.</li>
+      </ul></div>
+    </div>
+  </section>
+
   <section id="alpha4" style="border-top:0;padding-top:40px">
-    <h2>What changed in Alpha4</h2>
-    <p class="sub">Alpha4 makes the app faster and lets clinics share their work. The plates it builds are the same as Alpha3's, vertex for vertex, and the algorithm version is unchanged, so a case from Alpha3 opens with its approvals and plates intact.</p>
+    <h2>What changed in Alpha4 (22 October)</h2>
+    <p class="sub">Alpha4 made the app faster and let clinics share their work. Its plates were the same as Alpha3's, vertex for vertex; the 10 November update above is the first to change the algorithm version since Alpha3.</p>
     <div class="grid g2">
       <div class="card"><h3>Faster, without freezes</h3><ul>
         <li>Save takes under 2 seconds. It took 18 to 26 seconds on a thirteen-plate case and looked like a hang.</li>
@@ -125,7 +149,7 @@
         <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong>, and confirm.</li>
         <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
       </ol></div>
-      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha4 replaces Alpha3 and keeps its settings and recovery points; the previous version is kept as a backup when it updates. Alpha4 and Alpha3 build plates with the same algorithm version, so a case from Alpha3 keeps its approvals and plates. Cases from release 1 ask to be re-approved and their plates rebuilt; finish such a case before updating. Usage information is sent by default and can be turned off at the first launch or under Help; a case is shared only by hand or when you mark it as consented. See <a href="privacy.html">Privacy</a>.</p></div>
+      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha4 replaces Alpha3 and keeps its settings and recovery points; the previous version is kept as a backup when it updates. The 10 November update builds plates with algorithm version 6: a case from any earlier version asks to be re-approved and its plates rebuilt, and delivered plates are never changed; finish a case in progress before updating. Usage information is sent by default and can be turned off at the first launch or under Help; a case is shared only by hand or when you mark it as consented. See <a href="privacy.html">Privacy</a>.</p></div>
     </div>
   </section>
 </main>

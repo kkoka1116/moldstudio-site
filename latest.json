@@ -1,11 +1,11 @@
 {
- "algorithm_version": 5,
- "build_id": "alpha-1560152a6fd9",
- "notes": "Alpha4: Save takes under 2 seconds, Build all approved no longer freezes the window, and a series rebuilds about four times faster after an edit, with identical plates. Finished build folders are removed and case folders are swept on open. Usage information is on by default with a one-click off; clinics can share into a folder; a case marked as having research consent is shared automatically. Same algorithm version 5: open cases keep their approvals and plates.",
- "published": "2026-10-22",
- "sequence": 7,
- "sha256": "08b06afc9382358e68987edf35a7297302fad70adac731cb9cdd0a7c17ff85e8",
- "size": 254981777,
- "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r7/MoldStudio-Alpha4-macOS-arm64.zip",
+ "algorithm_version": 6,
+ "build_id": "alpha-904a2300ebee",
+ "notes": "Growth is paced by the infant's age at the scan, from the growth curves of healthy newborns (Bruggink 2019): key-pose growth phases, the unilateral closure's growth, and a check of the arch against healthy infants on the Anatomy step. Algorithm version 6: a case opened in this update asks to be re-approved and its plates rebuilt; delivered plates are unchanged. Finish a case in progress before updating.",
+ "published": "2026-11-10",
+ "sequence": 8,
+ "sha256": "4d11286b74b31554eb9b33c3655086a3d1d37ff1eddb67ecc500060bff7b722f",
+ "size": 254995619,
+ "url": "https://github.com/kkoka1116/moldstudio-site/releases/download/r8/MoldStudio-Alpha4-macOS-arm64.zip",
  "version": "0.1.0"
 }
