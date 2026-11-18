@@ -25,7 +25,7 @@
 <main class="wrap">
   <div class="hero" style="padding-bottom:20px">
     <h1>Download MoldStudio</h1>
-    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later. Each one is a single zip download with no account. The 10 November update of Alpha4 is the latest release: installed copies of Alpha4, Alpha3 and release 1 offer it as an update and install it when you quit. It changes the algorithm version, so a case opened in it asks to be re-approved and its plates rebuilt; finish a case in progress before updating.</p>
+    <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later; versions for Intel Macs and for Windows are on the way (<a href="#platforms">which computer</a>). Each one is a single zip download with no account. The 10 November update of Alpha4 is the latest release: installed copies of Alpha4, Alpha3 and release 1 offer it as an update and install it when you quit. It changes the algorithm version, so a case opened in it asks to be re-approved and its plates rebuilt; finish a case in progress before updating.</p>
   </div>
 
   <div class="grid g2">
@@ -48,6 +48,28 @@
       <p class="fine" style="margin-top:10px">SHA-256 <code style="word-break:break-all">f5deaa581daeafe8719f575dd44ffe740e34e1bb82571ac1b50357e017ef72a0</code> · <a href="https://github.com/kkoka1116/moldstudio-site/releases/download/r1/MoldStudio-macOS-arm64.zip">Release 1</a> · <a href="https://github.com/kkoka1116/moldstudio-site/releases">All releases, notes and checksums</a></p>
     </div>
   </div>
+
+  <section id="platforms" style="border-top:0;padding-top:32px">
+    <h2>Which computer</h2>
+    <p class="sub">MoldStudio is built separately for each kind of computer, from the same source, and each build passes the same automatic checks before it is listed here. The Apple Silicon Mac build is the reference: the others can differ from it in the last decimal places of a measurement, and those differences are measured before they ship.</p>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">Available</span>
+        <h3 style="margin-top:8px">Apple Silicon Mac</h3>
+        <p>M1 or later, macOS 15 or later. Alpha4 and Alpha3 above.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">Coming soon</span>
+        <h3 style="margin-top:8px">Intel Mac</h3>
+        <p>A Mac with an Intel processor. To check: Apple menu → <em>About This Mac</em> lists a <em>Processor</em> such as "Intel Core i7" (Apple Silicon Macs list a <em>Chip</em> instead). The download will appear here.</p>
+      </div>
+      <div class="card">
+        <span class="tag warn">Coming soon</span>
+        <h3 style="margin-top:8px">Windows</h3>
+        <p>Windows 10 or 11, 64-bit. It will be a zip: unzip the folder anywhere and run <code>MoldStudio.exe</code>. Windows will warn that the publisher is unknown the first time; choose <em>More info</em>, then <em>Run anyway</em>. The download will appear here.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="notice"><strong>Research alpha, not a medical device.</strong> MoldStudio is not cleared or approved by any regulator. Inspect and fit every plate. Nothing the software reports replaces clinical judgement.</div>
 
