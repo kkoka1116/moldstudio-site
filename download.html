@@ -30,7 +30,58 @@
     <p class="lead">Two versions for Apple Silicon Macs (M1 or later) with macOS 15 or later; versions for Intel Macs and for Windows are on the way (<a href="#platforms">which computer</a>). Each one is a single zip download with no account. The 10 November update of Alpha4 is the latest release: installed copies of Alpha4, Alpha3 and release 1 offer it as an update and install it when you quit. It changes the algorithm version, so a case opened in it asks to be re-approved and its plates rebuilt; finish a case in progress before updating.</p>
   </div>
 
-  <div class="grid g2">
+  <section id="signup" class="signup card" hidden>
+    <h3>Tell us who you are (optional)</h3>
+    <p class="fine">It helps us know who uses MoldStudio and lets us reach you with a safety notice for the
+       version you download. You can skip this and download straight away.</p>
+    <form id="signup-form">
+      <label>Email <input type="email" name="email" required autocomplete="email"></label>
+      <label>Name <input type="text" name="name" autocomplete="name"></label>
+      <label>Clinic or institution <input type="text" name="clinic" autocomplete="organization"></label>
+      <label>Role
+        <select name="role">
+          <option value="">Prefer not to say</option>
+          <option>Orthodontist</option><option>Surgeon</option><option>Prosthodontist</option>
+          <option>Dental technician</option><option>Researcher</option><option>Other</option>
+        </select>
+      </label>
+      <label>Country <input type="text" name="country" autocomplete="country-name"></label>
+      <!-- hidden from people; a bot that fills it in is dropped by the inbox -->
+      <label style="position:absolute;left:-9999px" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      <label class="check"><input type="checkbox" name="news"> Email me when a new version is released</label>
+      <p class="fine">We use this only as described in the <a href="privacy.html#signup">privacy notice</a>,
+         never share it, and delete it when you ask. Please don't enter anything about a patient.</p>
+      <button type="submit">Sign up and download</button>
+      <a href="#downloads" class="skip">Skip and download</a>
+      <p id="signup-status" role="status"></p>
+    </form>
+  </section>
+  <script>
+  (() => {
+    const SIGNUP_URL = "https://as63ixzivscfnckfapb75vv7nm0wwrkv.lambda-url.us-east-1.on.aws/v1/signup";
+    const box = document.getElementById("signup");
+    if (!SIGNUP_URL || !box) return;   // no endpoint: the page behaves as it does today
+    box.hidden = false;
+    const form = document.getElementById("signup-form");
+    const status = document.getElementById("signup-status");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const d = Object.fromEntries(new FormData(form));
+      const body = {v: 1, email: d.email, name: d.name || "", clinic: d.clinic || "",
+                    role: d.role || "", country: d.country || "", news: d.news === "on", website: d.website || ""};
+      try {
+        const r = await fetch(SIGNUP_URL, {method: "POST", headers: {"Content-Type": "application/json"},
+                                           body: JSON.stringify(body)});
+        status.textContent = r.ok ? "Thanks. Your download is below." : "That didn't go through; you can still download below.";
+      } catch {
+        status.textContent = "That didn't go through; you can still download below.";
+      }
+      document.getElementById("downloads")?.scrollIntoView({behavior: "smooth"});
+    });
+  })();
+  </script>
+
+  <div class="grid g2" id="downloads">
     <div class="card">
       <span class="tag">New</span>
       <h3 style="margin-top:8px">MoldStudio Alpha4</h3>
@@ -173,7 +224,7 @@
         <li>Open <strong>System Settings → Privacy &amp; Security</strong>, click <strong>Open Anyway</strong>, and confirm.</li>
         <li>When macOS asks about Desktop, Documents or Downloads, click <strong>Allow</strong>. If you decline, scans will look like corrupt files.</li>
       </ol></div>
-      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha4 replaces Alpha3 and keeps its settings and recovery points; the previous version is kept as a backup when it updates. The 10 November update builds plates with algorithm version 6: a case from any earlier version asks to be re-approved and its plates rebuilt, and delivered plates are never changed; finish a case in progress before updating. Usage information is sent by default and can be turned off at the first launch or under Help; a case is shared only by hand or when you mark it as consented. See <a href="privacy.html">Privacy</a>.</p></div>
+      <div class="card"><h3>Your data stays on your Mac</h3><p>Importing a scan copies it into the case folder. <strong>De-identify file and folder names before importing</strong>, because they are recorded in the case. Alpha4 replaces Alpha3 and keeps its settings and recovery points; the previous version is kept as a backup when it updates. The 10 November update builds plates with algorithm version 6: a case from any earlier version asks to be re-approved and its plates rebuilt, and delivered plates are never changed; finish a case in progress before updating. Usage information is sent by default and can be turned off at the first launch or under Help; a case is shared only by hand or when you mark it as consented. See <a href="privacy.html">Privacy</a>. The sign-up above the downloads is optional; downloading needs no account.</p></div>
     </div>
   </section>
 </main>
