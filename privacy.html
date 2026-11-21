@@ -33,7 +33,7 @@
     <h2>Usage information</h2>
     <p class="sub">On by default since Alpha4, with a one-click off at the first launch and under Help. Used to improve the app. The app carries a built-in destination whose key can post usage files and nothing else; it cannot upload a case.</p>
     <div class="grid g2">
-      <div class="card"><h3>Sent</h3><ul><li>Which steps are built and approved, and how long builds take</li><li>What kinds of edits are made: paint, erase, cage, key pose</li><li>Plate verdicts, print jobs, error types</li><li>A random token for each case, which cannot be traced back to the case outside your Mac</li></ul></div>
+      <div class="card"><h3>Sent</h3><ul><li>Which steps are built and approved, and how long builds take</li><li>What kinds of edits are made: paint, erase, cage, key pose</li><li>Plate verdicts, print jobs, error types</li><li>From the next release, crash reports: the kind of error and where in MoldStudio's own code it happened, never the error's text</li><li>A random token for each case, which cannot be traced back to the case outside your Mac</li></ul></div>
       <div class="card"><h3>Never sent</h3><ul><li>Scans or any geometry</li><li>Names, file or folder names, notes, free text</li><li>Dates, other than the time of each event</li></ul><p style="margin-top:8px">The format is an allowlist enforced in the app's code: anything not on it is dropped.</p></div>
     </div>
   </section>
@@ -45,6 +45,14 @@
       <div class="card"><h3>Removed</h3><ul><li>Names, notes, override reasons and other free text</li><li>Scanner, file names and paths, the case id</li><li>Calendar dates, which become days after the scan</li></ul><p style="margin-top:8px">Before a package is written, it is searched for the case folder's name, the scan's file name and the painter, and refused if any is found.</p></div>
     </div>
     <div class="notice">Where it goes: usage files go to the MoldStudio team's inbox through the built-in destination, or to the destination your clinic enrolled with. A shared case goes only to your clinic's enrolled endpoint or to a folder your clinic chose under Help › Sharing and privacy, for example a synced Drive or OneDrive folder; without one, a shared case is saved as a file for you to send. The inbox is pulled to the team's own computer and emptied; nothing is kept in the cloud.</div>
+  </section>
+  <section id="signup">
+    <h2>Signing up on the download page</h2>
+    <p class="sub">Optional: downloading needs no account. If you sign up, we keep your email and, only if you give them, your name, clinic or institution, role and country, whether you want release emails, and the time you signed up. Nothing else is kept: not your IP address and not your browser. It goes to the same inbox as usage files, which is pulled to the team's own computer and emptied. We use it to know who uses MoldStudio, to reach you with a safety notice about a version you downloaded and, only if you ticked the box, with news of new versions. It is never sold or shared. To have it deleted, ask us and it is deleted within 30 days. Please don't enter anything about a patient.</p>
+  </section>
+  <section>
+    <h2>The assistant</h2>
+    <p class="sub">From the next release, the plate assistant uses only a model running on your Mac. What it looks at, the plates' measurements and pictures, stays on the computer.</p>
   </section>
   <section>
     <h2>This website</h2>

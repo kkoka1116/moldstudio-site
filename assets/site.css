@@ -130,3 +130,16 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 @media (max-width: 380px) { .brand { font-size: 0; gap: 0; } .brand .mark { font-size: 14px; } }
 h2, h3 { text-wrap: balance; }
 a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* optional sign-up above the downloads (download.html) */
+.signup { margin: 0 0 22px; }
+.signup form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 16px; margin-top: 12px; }
+.signup label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.signup input[type=text], .signup input[type=email], .signup select {
+  font: inherit; font-size: 15px; color: var(--text); background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 10px; }
+.signup label.check { display: flex; align-items: center; gap: 8px; grid-column: 1 / -1; }
+.signup .fine, .signup #signup-status { grid-column: 1 / -1; margin: 0; }
+.signup button { font: inherit; font-weight: 600; padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  background: var(--accent); color: var(--bg); border: 1px solid var(--accent); justify-self: start; }
+.signup .skip { align-self: center; }
