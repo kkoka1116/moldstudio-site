@@ -142,4 +142,4 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-
 .signup .fine, .signup #signup-status { grid-column: 1 / -1; margin: 0; }
 .signup button { font: inherit; font-weight: 600; padding: 10px 16px; border-radius: 8px; cursor: pointer;
   background: var(--accent); color: var(--bg); border: 1px solid var(--accent); justify-self: start; }
-.signup .skip { align-self: center; }
+[hidden] { display: none !important; }
